@@ -232,7 +232,7 @@ if __name__ == "__main__":
         "-f",
         "--changes-as-file",
         default=None,
-        dest='changes_as_files',
+        # dest='changes_as_files',
         metavar="changed.txt",
         help="Path to file containing list of changes, one file per line.",
     )
@@ -240,7 +240,7 @@ if __name__ == "__main__":
         "-s",
         "--changes-as-string",
         default=None,
-        dest='changes_as_string',
+        # dest='changes_as_string',
         metavar="newline-separated-string",
         help="A string containing list of changed files, separated by newlines",
     )
@@ -248,7 +248,7 @@ if __name__ == "__main__":
 
     config_file = args.config_file
     if args.changes_as_file is not None:
-        with open(args.changes_as_files) as f:
+        with open(args.changes_as_file) as f:
             changed_files = [line.strip() for line in f if len(line) > 0]
     elif args.changes_as_string is not None:
         changed_files = [line.strip() for line in args.changes_as_string.splitlines()]

@@ -21,7 +21,7 @@
       # - name: echo-any-s2
       #   run: /bin/echo -n "any path containing sub2"
       #   type: shell
-  - path: "dstoos/dstooles/__init__.py"
+  - path: "dstools/dstools/__init__.py"
     actions:
       - template: show_changes
       - run: cat ${file_path}

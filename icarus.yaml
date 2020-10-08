@@ -1,0 +1,35 @@
+# Config has two sections
+# The "actions" section lists actions to take for each path. But see
+# the TODO section on stages.
+# The "action_templates" section defines actions that can then be
+# referred to in the "actions" section. It is optional and can be used
+# to avoid defining the same action multiple times for different paths.
+# The "action" key defined under a path is matched to the "id" key under
+# "action_templates".
+
+# TODO:
+#   - Validate config file
+#     - Check that all actions under paths with no "run" key defined
+#       have a correspondent under "actions"
+#     - More action types than just "shell"
+#   - Consider TOML instead of YAML. Is it more readable?
+---
+10_first-stage:
+  - path: "icarus.jenkinsfile"
+    actions:
+      - template: show_changes
+      # - name: echo-any-s2
+      #   run: /bin/echo -n "any path containing sub2"
+      #   type: shell
+  - path: "dstoos/dstooles/__init__.py"
+    actions:
+      - template: show_changes
+      - run: cat ${file_path}
+        name: show_init
+        type: shell
+action_templates:
+  - id: show_changes
+    name: directory path
+    run: "cat latest_git_changes.txt"
+    type: shell
+    cwd: True

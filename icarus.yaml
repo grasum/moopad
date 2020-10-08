@@ -30,6 +30,6 @@
 action_templates:
   - id: show_changes
     name: directory path
-    run: "cat latest_git_changes.txt"
+    run: "cat ${root_dir}/latest_git_changes.txt"
     type: shell
     cwd: True
